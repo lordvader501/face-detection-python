@@ -1,10 +1,11 @@
 import cv2 as cv
+import os
 
 
 frameWidth = 640
 frameHeight = 480
 color = 255,0,255
-cascade = cv.CascadeClassifier("data/cascade/face_cascade.xml")
+cascade = cv.CascadeClassifier(os.path.join(os.path.dirname(os.path.abspath(__file__)),"data","cascade","face_cascade.xml"))
 
 
 def empty(a):
