@@ -1,7 +1,7 @@
-from tkinter import * 
-from tkinter import ttk, filedialog
+from tkinter import Tk, PhotoImage, Button, ttk
 from data.src.infowin import info_win
 from data.src.buttons import open_cam, open_img, open_vid
+
     
 
 win = Tk()

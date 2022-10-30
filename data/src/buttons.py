@@ -2,7 +2,7 @@ from tkinter import filedialog
 from .facedetect import detImgFace, detVidFace , detCamFace, cv
 
 def open_img():
-    file = filedialog.askopenfilename(filetypes= [("JPEG", '*.jpeg'), ('JPEG', '*.jpg'), ('PNG', '*.png'), ('WebP', '*.webp'), ('All Files', '*.*')])
+    file = filedialog.askopenfilename(title= 'Open Image', filetypes= [("JPEG", '*.jpeg'), ('JPEG', '*.jpg'), ('PNG', '*.png'), ('WebP', '*.webp'), ('All Files', '*.*')])
     if file == '':
         pass
     else:
@@ -13,7 +13,7 @@ def open_img():
             pass
 
 def open_vid():
-    file = filedialog.askopenfilename(filetypes= [('MP4', '*.mp4'), ('AVI', '*.avi'), ('All Files', '*.*')])
+    file = filedialog.askopenfilename(title= 'Open Video', filetypes= [('MP4', '*.mp4'), ('AVI', '*.avi'), ('All Files', '*.*')])
     if file == '':
         pass
     else:
