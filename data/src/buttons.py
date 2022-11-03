@@ -1,5 +1,8 @@
 from tkinter import filedialog
-from .facedetect import detImgFace, detVidFace , detCamFace, cv
+from .camdetect import detCamFace, cvCam
+from .imgdetect import detImgFace, cvImg
+from .videodetect import detVidFace, cvVideo
+import threading as th
 
 def open_img():
     file = filedialog.askopenfilename(title= 'Open Image', filetypes= [("JPEG", '*.jpeg'), ('JPEG', '*.jpg'), ('PNG', '*.png'), ('WebP', '*.webp'), ('All Files', '*.*')])
@@ -7,9 +10,8 @@ def open_img():
         pass
     else:
         try:
-            detImgFace(file)
-            cv.destroyAllWindows()
-        except cv.error:
+            th.Thread(target= detImgFace(file)).start()
+        except cvImg.error:
             pass
 
 def open_vid():
@@ -18,10 +20,13 @@ def open_vid():
         pass
     else:
         try:
-            detVidFace(file)
-        except cv.error:
+            th.Thread(target= detVidFace(file)).start()
+        except cvVideo.error:
             pass
     
 def open_cam():
-    detCamFace()
+    try:
+        th.Thread(target= detCamFace()).start()
+    except cvCam.error:
+        pass
     

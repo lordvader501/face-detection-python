@@ -1,12 +1,13 @@
 from tkinter import Tk, PhotoImage, Button, ttk
 from data.src.infowin import info_win
-from data.src.buttons import open_cam, open_img, open_vid
+from data.src.buttons import open_cam, open_img, open_vid, th
 
     
 
 win = Tk()
 win.title("Face Detection")
 win.geometry("645x250+200+200")
+win.resizable(False, False)
 win_icon = PhotoImage(file= "data/Img/icon.png")
 win.iconphoto(False, win_icon)
 win['bg'] = '#798086'
@@ -22,13 +23,13 @@ s.map("my.TButton",
             background= [ ('!active','grey75'), ('pressed', 'aqua'), ('active', 'black')]
     )
 
-B1 = ttk.Button(win, text= "Image", command= open_img, style= 'my.TButton')
+B1 = ttk.Button(win, text= "Image", command=lambda: th.Thread(target= open_img).start(), style= 'my.TButton')
 B1.place(x= 90, y= 90)
 
-B2 = ttk.Button(win, text= "Video", command= open_vid, style= 'my.TButton')
+B2 = ttk.Button(win, text= "Video", command=lambda: th.Thread(target= open_vid).start(), style= 'my.TButton')
 B2.place(x= 340, y= 90)
 
-B3 = ttk.Button(win, text= "Camera", command= open_cam, style= 'my.TButton')
+B3 = ttk.Button(win, text= "Camera", command=lambda: th.Thread(target= open_cam).start(), style= 'my.TButton')
 B3.place(x= 90, y= 160)
 
 B4 = ttk.Button(win, text= "Close", command= win.destroy, style= 'my.TButton')

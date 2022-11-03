@@ -10,6 +10,7 @@ def info_win(win):
     new_win = Toplevel(win)
     new_win.title("About")
     new_win.geometry("445x350")
+    new_win.resizable(False, False)
     newwin_icon = PhotoImage(file= "data/Img/about.png")
     new_win.iconphoto(False, newwin_icon)
     new_win['bg'] = '#798086'
